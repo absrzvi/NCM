@@ -1,0 +1,48 @@
+# Known key shapes for the alpin fleet.
+# Keys derived from tests/fixtures/alpin hieradata.
+# type: one of bool | int | string | scalar | list | hash
+
+apt::update:
+  type: hash
+
+apn_config::modems:
+  type: hash
+
+base_profile::ccu::ospf_enabled:
+  type: bool
+
+base_profile::ccu::mar5_enabled:
+  type: bool
+
+base_profile::ccu::ipv6_enabled:
+  type: bool
+
+caching_dns::forwarders:
+  type: list
+
+caching_dns::acls:
+  type: hash
+
+caching_dns::domains:
+  type: hash
+
+ntp::servers:
+  type: list
+
+ntpd::service_ntpd_enable:
+  type: bool
+
+puppet::agent::runinterval:
+  type: int
+
+syslog::remote_host:
+  type: string
+
+syslog::port:
+  type: int
+
+timezone:
+  type: string
+
+docker::containers:
+  type: hash

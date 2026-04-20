@@ -1,0 +1,45 @@
+# Known key shapes for the dostoneu fleet.
+# Keys derived from tests/fixtures/dostoneu hieradata.
+# type: one of bool | int | string | scalar | list | hash
+
+apt::update:
+  type: hash
+
+apn_config::modems:
+  type: hash
+
+base_system::var_tmp_partition_size:
+  type: string
+
+ntp::servers:
+  type: list
+
+ntp::metadata:
+  type: hash
+
+dns::nameservers:
+  type: list
+
+package_management::auto_update:
+  type: bool
+
+package_management::allowed_repos:
+  type: list
+
+monitoring::enabled:
+  type: bool
+
+monitoring::interval:
+  type: int
+
+ntpd::service_ntpd_enable:
+  type: bool
+
+syslog::remote_host:
+  type: string
+
+syslog::port:
+  type: int
+
+docker::containers:
+  type: hash

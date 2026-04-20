@@ -1,0 +1,15 @@
+---
+extends: default
+
+rules:
+  line-length: disable
+  document-start: enable
+  truthy:
+    allowed-values: ['true', 'false']
+    check-keys: true
+  comments:
+    min-spaces-from-content: 1
+  braces:
+    max-spaces-inside: 1
+  brackets:
+    max-spaces-inside: 1
