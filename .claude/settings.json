@@ -1,0 +1,27 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git worktree *)",
+      "Bash(git checkout *)",
+      "Bash(git branch *)",
+      "Bash(npm test)",
+      "Bash(npm run *)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx playwright *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -m mypy *)",
+      "Bash(python -m ruff *)",
+      "Bash(python -m yamllint *)",
+      "Bash(python scripts/refresh_fixture.py *)",
+      "Bash(python scripts/validate_local.py *)",
+      "Bash(python scripts/run_puppet_local.py *)",
+      "Bash(docker build *)",
+      "Bash(docker compose config *)",
+      "Bash(docker compose ps)",
+      "Bash(docker compose logs *)"
+    ]
+  }
+}
