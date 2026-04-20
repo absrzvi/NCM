@@ -1,0 +1,17 @@
+# Puppet-environment-specific overrides: devel
+# Layer: env (layer 2 of 4)
+---
+puppet::agent::environment: devel
+puppet::agent::runinterval: 900  # more frequent in devel
+
+# Allow debug logging in devel
+logging::level: "debug"
+logging::destinations:
+  - type: "file"
+    path: "/var/log/puppet/agent.log"
+  - type: "syslog"
+    facility: "daemon"
+
+# Devel-only feature flags
+feature_flags::experimental: true
+feature_flags::strict_validation: false

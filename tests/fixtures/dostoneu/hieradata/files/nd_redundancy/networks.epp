@@ -1,0 +1,152 @@
+---
+networks:
+  bond:
+    network: 10.{{ project_id + 128 }}.{{ train_id }}.0/25
+    interface: bond0
+    ccu: 0
+    netconfig:
+      connection_type: bond
+      ipaddress: "10.{{ project_id + 128 }}.{{ train_id }}.{{ unit_id }}"
+      slave_interfaces:
+        - lan0
+        - lan1
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:00:0{{ unit_id }}"
+      <%- } -%>
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+    pools:
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 50
+          high_address_offset: 80
+          allow:
+            - known-clients
+            - members of "switch"
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 90
+          high_address_offset: 120
+          allow:
+            - known-clients
+            - members of "accesspoint"
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 40
+          allow:
+            - known-clients
+            - members of "devices"
+  management:
+    network: 10.{{ project_id + 128 }}.{{ train_id }}.128/25
+    interface: vlan100
+    ccu: 0
+    netconfig:
+      connection_type: vlan
+      parent_device: bond0
+      ipaddress_offset: "{{ unit_id }}"
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:10:0{{ unit_id }}"
+      <%- } -%>
+      vlan_id: 100
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+    pools:
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 50
+          high_address_offset: 80
+          allow:
+            - known-clients
+            - members of "switch"
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 90
+          high_address_offset: 120
+          allow:
+            - known-clients
+            - members of "accesspoint"
+      - router_address_offset: "{{ unit_id }}"
+        domain: "mng-nomad-net"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 40
+          allow:
+            - known-clients
+            - members of "devices"
+  passenger1:
+    network: 192.168.208.0/22
+    interface: vlan10
+    netconfig:
+      connection_type: vlan
+      parent_device: bond0
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:01:0{{ unit_id }}"
+      <%- } -%>
+      ipaddress_offset: "{{ unit_id }}"
+      vlan_id: 10
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+      literal: |-
+        on expiry {
+          set clip = binary-to-ascii(10, 8, ".", leased-address);
+          execute("/usr/local/bin/cp-revoke.sh", clip);
+        }
+    ccu: 0
+    pools:
+      - router_address: "192.168.208.1"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 1000
+          allow:
+            - unknown-clients
+          domain: "railnet.oebb.at"
+  staff:
+    network: 10.205.{{ train_id }}.0/24
+    interface: vlan30
+    netconfig:
+      connection_type: vlan
+      ipaddress_offset: "{{ unit_id }}"
+      parent_device: bond0
+      vlan_id: 30
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:03:0{{ unit_id }}"
+      <%- } -%>
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+    ccu: 0
+    pools:
+      - router_address_offset: "{{ unit_id }}"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 250
+          allow:
+            - unknown-clients
+  fis:
+    network: "172.19.128.0/17"
+    interface: vlan7
+    dhcp_enabled: false
+    netconfig:
+      connection_type: vlan
+      <% if Integer("$trainid_21net") % 2 == 0 { -%>
+ipaddress: "172.19.{{ 128 + ((%{hiera('fis_id')}+train_id) // 2) }}.2"
+      <% } else { -%>
+ipaddress: "172.19.{{ 128 + ((%{hiera('fis_id')}+train_id-1) // 2) }}.130"
+      <% } -%>
+parent_device: bond0
+      vlan_id: 7
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:00:7{{ unit_id }}"
+      <%- } -%>
+    ccu: 0
+    pools: []
+

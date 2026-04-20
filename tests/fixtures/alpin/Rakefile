@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+%w[
+  lib/tasks
+  lib/tasks/ci
+].each { |p| Rake.add_rakelib p }
+
+@config = {
+  'branch'     => `git rev-parse --abbrev-ref HEAD`.chomp,
+  'env'        => 'alpin',
+  'remote_dir' => nil,
+  'server'     => 'vmpuppet01.ovh2.21net.com',
+  'user'       => 'admin21net'
+}
+
+@config['remote_dir'] = case @config['branch']
+                        when /^master$/
+                          @config['env']
+                        else
+                          if @config['env'] == 'production'
+                            @config['env']
+                          else
+                            "#{@config['env']}_#{@config['branch']}"
+                          end
+                        end
+
+puts @config['remote_dir']
+puts
+# -*- mode: ruby -*-
+# vi: set ft=ruby :

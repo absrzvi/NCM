@@ -1,0 +1,52 @@
+[
+  {
+    "id": "abc1234def5678901234567890abcdef12345678",
+    "short_id": "abc1234d",
+    "created_at": "2026-04-20T14:30:00.000Z",
+    "parent_ids": ["def5678901234567890abcdef12345678abc1234"],
+    "title": "Update hieradata/common.yaml: set ntp::servers for alpin",
+    "message": "Update hieradata/common.yaml: set ntp::servers for alpin\n\nChanged key_path: ntp::servers\nApplied by: config-engineer@21net.com via NMS+ Config UI\n",
+    "author_name": "Config Engineer",
+    "author_email": "REDACTED_IN_FIXTURE",
+    "authored_date": "2026-04-20T14:30:00.000Z",
+    "committer_name": "Config Engineer",
+    "committer_email": "REDACTED_IN_FIXTURE",
+    "committed_date": "2026-04-20T14:30:00.000Z",
+    "trailers": {},
+    "extended_trailers": {},
+    "web_url": "https://gitlab.example.com/env/environment-alpin/-/commit/abc1234def5678901234567890abcdef12345678",
+    "stats": {
+      "additions": 3,
+      "deletions": 1,
+      "total": 4
+    },
+    "status": "success",
+    "project_id": 1211,
+    "last_pipeline": null
+  },
+  {
+    "id": "def5678901234567890abcdef12345678abc1234",
+    "short_id": "def56789",
+    "created_at": "2026-04-19T10:15:00.000Z",
+    "parent_ids": ["1234567890abcdef1234567890abcdef12345678"],
+    "title": "Update hieradata/nodes/box1-t100.alpin.21net.com.yaml: role::access_node::uplink_speed",
+    "message": "Update hieradata/nodes/box1-t100.alpin.21net.com.yaml: role::access_node::uplink_speed\n\nChanged key_path: role::access_node::uplink_speed\nApplied by: config-engineer@21net.com via NMS+ Config UI\n",
+    "author_name": "Config Engineer",
+    "author_email": "REDACTED_IN_FIXTURE",
+    "authored_date": "2026-04-19T10:15:00.000Z",
+    "committer_name": "Config Engineer",
+    "committer_email": "REDACTED_IN_FIXTURE",
+    "committed_date": "2026-04-19T10:15:00.000Z",
+    "trailers": {},
+    "extended_trailers": {},
+    "web_url": "https://gitlab.example.com/env/environment-alpin/-/commit/def5678901234567890abcdef12345678abc1234",
+    "stats": {
+      "additions": 1,
+      "deletions": 1,
+      "total": 2
+    },
+    "status": "success",
+    "project_id": 1211,
+    "last_pipeline": null
+  }
+]

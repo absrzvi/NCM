@@ -1,0 +1,22 @@
+fleet: alpin
+puppet_environments:
+  devel:
+    gitlab_project_id: 1211
+    gitlab_project_path: "env/environment-alpin"
+    target_branch: devel
+    layer_count: 3
+    hiera_yaml_path: "hiera.yaml"
+    bench_allowlist:
+      - '^box1-t(100|101|125)\.alpin\.21net\.com$'
+    known_keys_path: "bff/config/known_keys/alpin.yaml"
+    active: true
+  staging:
+    gitlab_project_id: 1211
+    gitlab_project_path: "env/environment-alpin"
+    target_branch: staging
+    layer_count: 3
+    hiera_yaml_path: "hiera.yaml"
+    bench_allowlist:
+      - '^box1-t(100|101|125)\.alpin\.21net\.com$'
+    known_keys_path: "bff/config/known_keys/alpin.yaml"
+    active: true

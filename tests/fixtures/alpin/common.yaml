@@ -1,0 +1,28 @@
+# Common hieradata for alpin fleet
+# Layer: common (layer 1 of 3)
+---
+# NTP configuration
+ntp::servers:
+  - 10.0.0.1
+  - 10.0.0.2
+
+# DNS settings
+dns::nameservers:
+  - 10.1.0.53
+  - 10.1.0.54
+
+# Syslog target
+syslog::remote_host: "10.2.0.100"
+syslog::port: 514
+
+# Puppet agent settings
+puppet::agent::runinterval: 1800
+puppet::agent::environment: devel
+
+# Banner text (multiline scalar)
+motd::content: |
+  WARNING: Authorised access only.
+  All activity is monitored and logged.
+
+# Inline comment example
+timezone: "Europe/London"  # matches DC rack location

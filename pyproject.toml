@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+exclude = ["tests/"]
+
+[tool.coverage.run]
+source = ["bff"]
+omit = ["bff/__init__.py", "bff/routers/__init__.py", "bff/middleware/__init__.py", "bff/services/__init__.py"]

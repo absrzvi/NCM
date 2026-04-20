@@ -1,0 +1,22 @@
+# Role-level hieradata: switch
+# Layer: roles (layer 3 of 4)
+---
+# VLAN configuration
+vlans:
+  "10":
+    name: "management"
+    description: "OOB management VLAN"
+  "20":
+    name: "servers"
+    description: "Server infrastructure VLAN"
+  "30":
+    name: "monitoring"
+    description: "Monitoring and telemetry VLAN"
+
+# STP settings
+stp::mode: "rapid-pvst"
+stp::priority: 4096
+
+# LLDP
+lldp::enabled: true
+lldp::timer: 30

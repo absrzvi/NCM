@@ -1,0 +1,21 @@
+# Role-level hieradata: router
+# Layer: roles (layer 2 of 3)
+---
+# SNMP configuration for routers
+snmp::communities:
+  - name: "public"
+    access: "ro"
+  - name: "private"
+    access: "rw"
+
+snmp::trap_destinations:
+  - host: "10.2.0.200"
+    port: 162
+    version: "2c"
+
+# Firewall baseline for routers
+firewall::manage: true
+firewall::purge_unmanaged: false
+
+# Syslog override for routers — more verbose
+syslog::level: "info"

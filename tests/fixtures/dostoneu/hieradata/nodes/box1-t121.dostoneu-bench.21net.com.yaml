@@ -1,0 +1,28 @@
+---
+# Node: box1-t121.dostoneu-bench.21net.com
+# Fleet: dostoneu | Puppet environment: devel
+# Captured from env/environment-dostoneu (project 1136)
+
+classes:
+  - role::bench_node
+
+role::bench_node::type: "t121"
+role::bench_node::location: "dostoneu-rack-B01"
+role::bench_node::uplink_speed: "10G"
+
+ntp::servers:
+  - 0.pool.ntp.org
+  - ntp.dostoneu-bench.21net.com
+
+network::interfaces:
+  eth0:
+    ip: "10.21.121.10"
+    netmask: "255.255.255.0"
+    gateway: "10.21.121.1"
+  eth1:
+    ip: "192.168.121.10"
+    netmask: "255.255.255.0"
+
+# Bench-specific overrides
+actions::node_role: "primary"
+actions::bench_id: "bench-121"

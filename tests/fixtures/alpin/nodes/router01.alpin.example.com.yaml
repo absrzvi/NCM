@@ -1,0 +1,22 @@
+# Node-level overrides for router01.alpin.example.com
+# Layer: nodes (layer 3 of 3)
+---
+# Override NTP for this node
+ntp::servers:
+  - 127.127.1.0  # local clock fallback
+  - 10.0.0.1
+
+# Node-specific interface config
+network::interfaces:
+  eth0:
+    address: "192.168.1.1"
+    netmask: "255.255.255.0"
+    gateway: "192.168.1.254"
+  eth1:
+    address: "10.10.0.1"
+    netmask: "255.255.0.0"
+
+classes:
+  - role::router
+  - profile::base
+  - profile::monitoring

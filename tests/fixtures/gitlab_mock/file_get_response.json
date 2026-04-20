@@ -1,0 +1,13 @@
+{
+  "file_name": "common.yaml",
+  "file_path": "hieradata/common.yaml",
+  "size": 1247,
+  "encoding": "base64",
+  "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "ref": "devel",
+  "blob_id": "abc1234def5678901234567890abcdef12345678",
+  "commit_id": "abc1234def5678901234567890abcdef12345678",
+  "last_commit_id": "abc1234def5678901234567890abcdef12345678",
+  "execute_filemode": false,
+  "content": "LS0tCm50cDo6c2VydmVyczoKICAtIDAucG9vbC5udHAub3JnCiAgLSAxLnBvb2wubnRwLm9yZwpzbnBtZDo6Y29tbXVuaXR5OiAicHVibGljIgo="
+}

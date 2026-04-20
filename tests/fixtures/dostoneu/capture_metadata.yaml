@@ -1,0 +1,16 @@
+fleet: dostoneu
+project_id: 1136
+project_path: env/environment-dostoneu
+branch: devel
+commit_sha: 991e77362a31155eb2b1410c99507ad21f041bf4
+captured_at: '2026-04-20T20:16:52Z'
+captured_by: unknown
+scrubbed_keys:
+- engineering_pages::credentials_password
+- engineering_pages::ssl_key
+- obn::secret
+- portal::autologin_salt_hash
+- mar3_captiveportal_api::salt_hash
+- snmpd::usersv3
+- mqtt_bridge::brokers
+notes: "All secret-flagged keys have been replaced with the placeholder: \"REDACTED_IN_FIXTURE\"\n"

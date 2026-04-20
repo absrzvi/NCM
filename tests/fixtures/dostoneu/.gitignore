@@ -1,0 +1,12 @@
+.DS_Store
+.bundle
+.yardoc
+.idea
+Gemfile.lock
+coverage
+doc/
+pkg
+vendor
+pdf/
+module_docs_*
+markdown/

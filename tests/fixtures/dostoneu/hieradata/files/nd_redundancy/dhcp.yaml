@@ -1,0 +1,40 @@
+dhcp:
+  classes:
+    Wing-7562:
+      match_conditions:
+      - substring(option vendor-class-identifier, 0, 13) = "WingAP.AP7562"
+      options:
+        AP-adoption: pool1=10.140.12.121;level=1;rf-domain=Train12
+        AP-protocol: ftp://anonymous:REDACTED_IN_FIXTURE
+        AP-path: /firmware/AP7562-active-firmware.img
+    accesspoint:
+      match_conditions:
+      - (substring (option host-name, 0, 8) = "CYBOX-AP")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "0:0:5b")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "74:67:f7")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "b8:50:1")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "48:9b:d5")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "94:9b:2c")
+    switch:
+      match_conditions:
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "28:60:46")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "00:90:e8")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "74:8f:4d")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) = "a0:59:3a")
+    devices:
+      boolean_operator: and
+      match_conditions:
+      - (substring (option host-name, 0, 8)  != "CYBOX-AP")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "0:0:5b")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "28:60:46")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "00:90:e8")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "0:10:2")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "0:18:7d")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "0:c:c6")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "0:c:42")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "74:8f:4d")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "74:67:f7")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "b8:50:1")
+      - (binary-to-ascii(16,8,":",substring (hardware, 1, 3)) != "94:9b:2c")
+  location: /tmp/dhcp
+  literal: "option AP-adoption code 191 = string;\noption AP-protocol code 186 = string;\noption AP-path code 187 = string;"

@@ -1,0 +1,27 @@
+{
+  "name": "config/spike-04-fixture-capture",
+  "merged": false,
+  "protected": false,
+  "developers_can_push": false,
+  "developers_can_merge": false,
+  "can_push": true,
+  "default": false,
+  "web_url": "https://gitlab.example.com/env/environment-alpin/-/tree/config/spike-04-fixture-capture",
+  "commit": {
+    "id": "abc1234def5678901234567890abcdef12345678",
+    "short_id": "abc1234d",
+    "created_at": "2026-04-20T14:32:00.000Z",
+    "parent_ids": ["def5678901234567890abcdef12345678abc1234"],
+    "title": "SPIKE-04: Capture test fixtures for alpin and dostoneu at abc1234",
+    "message": "SPIKE-04: Capture test fixtures for alpin and dostoneu at abc1234\n",
+    "author_name": "NMS+ Config Service",
+    "author_email": "REDACTED_IN_FIXTURE",
+    "authored_date": "2026-04-20T14:32:00.000Z",
+    "committer_name": "NMS+ Config Service",
+    "committer_email": "REDACTED_IN_FIXTURE",
+    "committed_date": "2026-04-20T14:32:00.000Z",
+    "trailers": {},
+    "extended_trailers": {},
+    "web_url": "https://gitlab.example.com/env/environment-alpin/-/commit/abc1234def5678901234567890abcdef12345678"
+  }
+}

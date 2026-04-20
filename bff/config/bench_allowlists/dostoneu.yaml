@@ -1,0 +1,3 @@
+fleet: dostoneu
+patterns:
+  - '^box1-t(121|122|123|124|125|127)\.dostoneu-bench\.21net\.com$'

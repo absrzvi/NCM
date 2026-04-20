@@ -1,0 +1,331 @@
+# WARNING: Could not parse as YAML; written raw. Scrubbing skipped.
+---
+topology:
+  box1_coach_number: 3
+
+  ap1: &ap1
+    "AP":
+      "coach_inc": 0
+      "device_val": 1
+
+  ap2: &ap2
+    "AP":
+      "coach_inc": 0
+      "device_val": 1
+
+  box1: &box1
+    "BOX":
+      coach_inc: 0
+      device_val: 1
+
+  switch: &switch
+    "SW":
+      "coach_inc": 0
+      "device_val": 1
+  wagon_b600:  &wagon_b600
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 3 
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 1 
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 3
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+  wagon_f500: &wagon_f500
+    #SW1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": +1
+          "device_val": 1
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    #SW3
+    "SW":
+      3:
+        "SW":
+          "coach_inc": +1
+          "device_val": 2
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 3
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+    #SW2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 3
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+  wagon_e400: &wagon_e400
+    #SW1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": +1
+          "device_val": 1
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 2
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    #SW3
+    "SW":
+      3:
+        "SW":
+          "coach_inc": +1
+          "device_val": 2
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 3
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+    #SW2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": -1
+          "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+  wagon_d300: &wagon_d300
+    "BOX":
+      1:
+        "SW":
+          "coach_inc": 0
+          "device_val": 1
+      2:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+    #SW1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": -1
+          "device_val": 1
+      4:
+        "SW":
+          "coach_inc": +1
+          "device_val": 2
+      5: *box1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    #SW2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": +1
+          "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+    #SW3
+    "SW":
+      3:
+        "SW":
+          "coach_inc": -1
+          "device_val": 2
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      5: *box1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+  wagon_c200: &wagon_c200
+    #SW1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": -1
+          "device_val": 1
+      4:
+        "SW":
+          "coach_inc": +1
+          "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    #SW2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": +1
+          "device_val": 3
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+    #SW3
+    "SW":
+      3:
+        "SW":
+          "coach_inc": -1
+          "device_val": 2
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 3
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+  wagon_a100: &wagon_a100
+    #SW1
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "coach_inc": +1
+        "device_val": 1
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+    #SW2
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 3
+      4:
+        "SW":
+          "coach_inc": +1
+          "device_val": 3
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 2
+    #SW3
+    "SW":
+      3:
+        "SW":
+          "coach_inc": 0
+          "device_val": 1
+      4:
+        "SW":
+          "coach_inc": 0
+          "device_val": 2
+      7:
+        "AP":
+          "coach_inc": 0
+          "device_val": 3 
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 4
+  dostoneu6:
+    6: *wagon_b600
+    5: *wagon_f500
+    4: *wagon_e400
+    3: *wagon_d300
+    2: *wagon_c200
+    1: *wagon_a100
+  dostoneu4:
+    1: *wagon_b600
+    2: *wagon_e400
+    3: *wagon_d300
+    4: *wagon_a100
+
+
+
+
+
+

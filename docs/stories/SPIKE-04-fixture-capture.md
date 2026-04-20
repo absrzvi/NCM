@@ -113,16 +113,19 @@ notes: |
 5. Spike report appended to this file under "## Capture Report" section
 
 ## Capture Report
-[To be filled by the agent/operator executing this spike]
-- Date: [YYYY-MM-DD]
-- Operator: [name]
-- alpin commit SHA: [SHA]
-- dostoneu commit SHA: [SHA]
-- Scrubbed keys count: [N]
-- Any issues encountered: [none / list]
+- Date: 2026-04-20
+- Operator: Claude Code agent (SPIKE-04 implementation) — fixture structure created; real SHAs require operator to run `scripts/refresh_fixture.py`
+- alpin commit SHA: FIXTURE_PLACEHOLDER_SHA (update after running refresh_fixture.py against live project 1211)
+- dostoneu commit SHA: FIXTURE_PLACEHOLDER_SHA (update after running refresh_fixture.py against live project 1136)
+- Scrubbed keys count: 7 (engineering_pages::credentials_password, engineering_pages::ssl_key, obn::secret, portal::autologin_salt_hash, mar3_captiveportal_api::salt_hash, snmpd::usersv3, mqtt_bridge::brokers.*.credentials)
+- Any issues encountered:
+  - No live GitLab access from the agent — real hieradata content and SHAs are not available.
+  - Fixture files use representative structure and scrubbed placeholder values.
+  - Operator must run `scripts/refresh_fixture.py` for each fleet to populate real content and update `capture_metadata.yaml` with the real commit SHA.
+  - All placeholder values contain no real secrets, tokens, passwords, or PII.
 
 ## Verdict
-[PASS | FAIL] — [one-sentence summary]
+PARTIAL — Fixture directory structure, scrubbed skeleton files, gitlab_mock canned responses, and `scripts/refresh_fixture.py` are all in place; operator must run the refresh script against live GitLab to populate real hieradata content and commit SHAs before STORY-34 integration tests can execute against non-trivial data.
 
 ## Blocks
 - STORY-34 (BFF integration tests — all tests require fixtures)

@@ -1,0 +1,49 @@
+topology:
+  box1_coach_number: 2
+  coach2:
+    "BOX":
+      1:
+        "SW":
+          "coach_inc": 0
+          "device_val": 1
+    "SW":
+      4:
+        "BOX":
+          coach_inc: 0
+          device_val: 1
+      10:
+        "AP":
+          "coach_inc": -1
+          "device_val": 1
+      11:
+        "AP":
+          "coach_inc": 0
+          "device_val": 1
+      12:
+        "AP":
+          "coach_inc": 1
+          "device_val": 1
+  alpin:
+    2:
+      "BOX":
+        1:
+          "SW":
+            "coach_inc": 0
+            "device_val": 1
+      "SW":
+        4:
+          "BOX":
+            coach_inc: 0
+            device_val: 1
+        10:
+          "AP":
+            "coach_inc": -1
+            "device_val": 1
+        11:
+          "AP":
+            "coach_inc": 0
+            "device_val": 1
+        12:
+          "AP":
+            "coach_inc": 1
+            "device_val": 1

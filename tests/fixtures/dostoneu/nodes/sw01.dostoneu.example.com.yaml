@@ -1,0 +1,21 @@
+# Node-level overrides for sw01.dostoneu.example.com
+# Layer: nodes (layer 4 of 4)
+---
+network::hostname: "sw01.dostoneu.example.com"
+
+# Uplink interface overrides
+network::interfaces:
+  ge-0/0/0:
+    description: "Uplink to core"
+    speed: "1g"
+    duplex: "full"
+
+# Node-specific SNMP
+snmp::location: "DC1-RACK-05-U12"
+snmp::contact: "netops@example.com"
+
+classes:
+  - role::switch
+  - profile::base
+  - profile::snmp
+  - profile::syslog

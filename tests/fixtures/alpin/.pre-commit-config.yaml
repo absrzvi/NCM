@@ -1,0 +1,47 @@
+default_stages:
+- commit
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: no-commit-to-branch
+    args:
+    - --branch
+    - master
+    name: Protected master branch
+    stages:
+    - commit
+    - merge-commit
+    - push
+  - id: check-merge-conflict
+  - id: check-added-large-files
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+- repo: https://github.com/pre-commit/mirrors-prettier
+  rev: v3.0.0-alpha.6
+  hooks:
+  - id: prettier
+- repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
+  rev: v2.2.0
+  hooks:
+  - id: epp-validate
+  - id: erb-validate
+  - id: puppet-lint
+    args:
+    - --fail-on-warnings
+    - --fix
+  - id: puppet-validate
+  - id: r10k-validate
+  - id: ruby-validate
+- repo: https://github.com/adrienverge/yamllint
+  rev: v1.30.0
+  hooks:
+  - id: yamllint
+- repo: local
+  hooks:
+  - id: erb-templates
+    name: ERB templates are deprecated
+    entry: ERB templates should not be replaced by EPP
+    language: fail
+    files: .*\.erb$

@@ -1,0 +1,62 @@
+{
+    "apns": [
+    ],
+    "modem_commands": [
+        "marcli modem all poweron",
+        "sleep 90"
+    ],
+    "modem_backup_commands": [
+        "marcli modem all sim 2",
+        "sleep 90"
+    ],
+    "packages": [
+        {
+            "name": "mar3-frontend",
+            "version": "1.\\d+$.\\d+$"
+        },
+        {
+            "name": "21net-verification-scripts",
+            "version": "1.1.\\d+$"
+        }
+    ],
+    "backend_servers": [
+        "8.8.8.8",
+        "192.168.51.2",
+        "192.168.51.3",
+        "192.168.51.4"
+    ],
+    "blocked_websites": [
+        "http://www.porn.com"
+    ],
+    "systemd_processes": [
+        "rtl-client",
+        "mar3-frontend",
+        "gpsd-ws",
+        "nginx",
+        "ModemManager",
+        "NetworkManager",
+        "zabbix-agent",
+        "mar3-captiveportal-api",
+        "bind9",
+        "squid3",
+        "isc-dhcp-server",
+        "dbus"
+    ],
+    "mar3": {
+        "active_links": 3,
+        "mbit_threshold": 5,
+        "saturation_script": "/usr/local/sbin/saturate.sh"
+    },
+    "ssd": {
+        "available": true
+    },
+    "rtl_project_id": {
+        "characters": 2
+    },
+    "active_modems": [
+        "ce0p0",
+        "ce1p0",
+        "ce2p0",
+        "ce3p0"
+    ]
+}

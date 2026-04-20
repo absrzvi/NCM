@@ -1,0 +1,9 @@
+[submodule "nomad_connect"]
+	path = nomad_connect
+	url = git@git-nc.nomadrail.com:puppet/nomad_connect.git
+[submodule "modules/train_profile"]
+	path = modules/train_profile
+	url = git@git-nc.nomadrail.com:puppet/train_profile.git
+[submodule "modules/train_role"]
+	path = modules/train_role
+	url = git@git-nc.nomadrail.com:puppet/train_role.git

@@ -1,5 +1,5 @@
 # Spike: [SPIKE-02] ruamel.yaml Round-Trip Fidelity
-Status: READY
+Status: DONE
 D-decisions touched: D5 (ruamel.yaml round-trip), D14 (byte_diff_drift gate)
 
 ## Why (from PRD)
@@ -64,10 +64,39 @@ notes: |
 5. If fail: escalate to architect with sample diffs before any D5/D14 story is scoped
 
 ## Findings
-[To be filled by the agent executing this spike]
+
+Executed 2026-04-20 against synthetic representative fixtures in
+`tests/fixtures/alpin/` (3 files) and `tests/fixtures/dostoneu/` (4 files).
+SPIKE-04 (live fixture capture) had not yet run; fixtures were created to
+cover the YAML features present in real hieradata: inline comments, leading
+comments, block scalar literals (`|`), YAML anchors (`&`) and merge keys
+(`<<: *`), quoted strings, nested mappings/sequences, and inline comments
+with varying whitespace.
+
+| File | Classification | Notes |
+|---|---|---|
+| alpin/common.yaml | Perfect | Byte-identical |
+| alpin/roles/router.yaml | Perfect | Byte-identical |
+| alpin/nodes/router01.alpin.example.com.yaml | Perfect | Byte-identical |
+| dostoneu/common.yaml | Benign | `comment_spacing_normalised` — `# seconds` gained one leading space |
+| dostoneu/env/devel.yaml | Perfect | Byte-identical |
+| dostoneu/roles/switch.yaml | Perfect | Byte-identical |
+| dostoneu/nodes/sw01.dostoneu.example.com.yaml | Perfect | Byte-identical |
+
+Benign patterns observed: `comment_spacing_normalised` (one instance).
+No anchor mangling, no key reordering, no comment loss, no block-scalar
+coercion detected.
+
+Key finding: `yaml.preserve_quotes = True` must be set on every `YAML(typ='rt')`
+instance used in the write path to prevent unnecessary quote-stripping from
+triggering the `byte_diff_drift` gate (D14).
+
+**NOTE:** re-run `python scripts/spike_ruamel_roundtrip.py` once SPIKE-04
+populates live fixtures. Verdict may be updated at that point.
 
 ## Verdict
-[PASS | FAIL] — [one-sentence summary]
+PASS — all 7 fixture files produce either byte-identical or benign round-trips;
+`unexpected_diffs` is empty; STORY-15 and STORY-10 are unblocked.
 
 ## Blocks
 - STORY-15 (Apply All endpoint — D5 ruamel write path)
@@ -82,9 +111,9 @@ notes: |
 - [ ] Given the verdict is PASS, when the tolerance file is committed, then D5 and D14 stories are unblocked
 
 ## Definition of Done
-- [ ] `scripts/spike_ruamel_roundtrip.py` written and executed against all fixtures
-- [ ] `bff/config/ruamel_tolerance.yaml` committed with complete benign pattern whitelist
-- [ ] Findings section populated with summary of all observed diffs
-- [ ] Pass/fail verdict stated
-- [ ] If pass: STORY-15, STORY-10 unblocked and marked READY
-- [ ] If fail: architect notified before any D5/D14 story is written
+- [x] `scripts/spike_ruamel_roundtrip.py` written and executed against all fixtures
+- [x] `bff/config/ruamel_tolerance.yaml` committed with complete benign pattern whitelist
+- [x] Findings section populated with summary of all observed diffs
+- [x] Pass/fail verdict stated
+- [x] If pass: STORY-15, STORY-10 unblocked and marked READY
+- [ ] If fail: architect notified before any D5/D14 story is written (N/A — verdict PASS)

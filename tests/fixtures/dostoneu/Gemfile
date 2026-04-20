@@ -1,0 +1,17 @@
+source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+
+raise 'Outdated Ruby detected. Use RVM to install a supported version.' unless RUBY_VERSION.to_f > 2.2
+
+ENV['PUPPET_VERSION'].nil? ? puppetversion = '~> 4.0' : puppetversion = ENV['PUPPET_VERSION'].to_s
+gem 'puppet', puppetversion
+
+gem 'colorize'
+gem 'puppet-lint'
+gem 'puppet-syntax'
+gem 'puppetlabs_spec_helper'
+gem 'rake'
+gem 'rspec'
+gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
+gem 'rspec-puppet-augeas'
+gem 'rubocop'
+gem 'simplecov'

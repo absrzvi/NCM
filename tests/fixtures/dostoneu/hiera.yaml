@@ -1,0 +1,15 @@
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+- name: Nodes
+  path: nodes/%{::projectname_21net}/%{::trusted.certname}.yaml
+- name: Pipeline
+  path: pipeline/%{::projectname_21net}.yaml
+- name: File parameter overrides
+  lookup_key: hiera_file
+- name: MAR3 Actions
+  path: actions.yaml
+- name: Common
+  path: common.yaml

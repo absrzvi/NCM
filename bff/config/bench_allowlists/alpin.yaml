@@ -1,0 +1,3 @@
+fleet: alpin
+patterns:
+  - '^box1-t(100|101|125)\.alpin\.21net\.com$'

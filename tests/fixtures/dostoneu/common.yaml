@@ -1,0 +1,30 @@
+# Common hieradata for dostoneu fleet
+# Layer: common (layer 1 of 4)
+---
+# Anchor example — tests ruamel anchor preservation
+_defaults: &defaults
+  owner: "netops"
+  managed: true
+  environment: "devel"
+
+# NTP — references anchor
+ntp::servers:
+  - 10.50.0.1
+  - 10.50.0.2
+ntp::metadata:
+  <<: *defaults
+
+# DNS
+dns::nameservers:
+  - 10.51.0.53
+
+# Package management
+package_management::auto_update: false
+package_management::allowed_repos:
+  - "base"
+  - "updates"
+  - "extras"
+
+# Monitoring
+monitoring::enabled: true
+monitoring::interval: 300  # seconds

@@ -1,0 +1,22 @@
+fleet: dostoneu
+puppet_environments:
+  devel:
+    gitlab_project_id: 1136
+    gitlab_project_path: "env/environment-dostoneu"
+    target_branch: devel
+    layer_count: 4
+    hiera_yaml_path: "hiera.yaml"
+    bench_allowlist:
+      - '^box1-t(121|122|123|124|125|127)\.dostoneu-bench\.21net\.com$'
+    known_keys_path: "bff/config/known_keys/dostoneu.yaml"
+    active: true
+  staging:
+    gitlab_project_id: 1136
+    gitlab_project_path: "env/environment-dostoneu"
+    target_branch: staging
+    layer_count: 4
+    hiera_yaml_path: "hiera.yaml"
+    bench_allowlist:
+      - '^box1-t(121|122|123|124|125|127)\.dostoneu-bench\.21net\.com$'
+    known_keys_path: "bff/config/known_keys/dostoneu.yaml"
+    active: true

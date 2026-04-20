@@ -1,0 +1,103 @@
+---
+# yamllint disable rule:line-length
+networks:
+  management:
+    network: "10.{{ 128 + project_id }}.{{ train_id }}.0/24"
+    interface: bond0
+    netconfig:
+      connection_type: bond
+      slave_interfaces:
+        - lan0
+        - lan1
+      ipaddress: "10.{{ 128 + project_id }}.{{ train_id }}.{{ unit_id }}"
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:10:0{{ unit_id }}"
+      <%- } -%>
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+    ccu: 0
+    pools:
+      - router_address: "10.{{ 128 + project_id }}.{{ train_id }}.{{ unit_id }}"
+        network: "10.{{ 128 + project_id }}.{{ train_id }}.0/24"
+        domain: "{{train_id}}.mgmt.21net.com"
+        dhcp:
+          low_address_offset: 200
+          high_address_offset: 219
+          allow:
+            - known-clients
+            - members of "switch"
+      - router_address: "10.{{ 128 + project_id }}.{{ train_id }}.{{ unit_id }}"
+        network: "10.{{ 128 + project_id }}.{{ train_id }}.0/24"
+        domain: "{{train_id}}.mgmt.21net.com"
+        dhcp:
+          low_address_offset: 220
+          high_address_offset: 239
+          allow:
+            - known-clients
+            - members of "accesspoint"
+      - router_address: "10.{{ 128 + project_id }}.{{ train_id }}.{{ unit_id }}"
+        network: "10.{{ 128 + project_id }}.{{ train_id }}.0/24"
+        domain: "{{train_id}}.mgmt.21net.com"
+        dhcp:
+          low_address_offset: 40
+          high_address_offset: 99
+          allow:
+            - known-clients
+            - members of "devices"
+  passenger1:
+    network: 192.168.96.0/22
+    interface: vlan20
+    netconfig:
+      connection_type: vlan
+      parent_device: bond0
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:21:1{{ unit_id }}"
+      <%- } -%>
+      ipaddress_offset: "{{ unit_id }}"
+      vlan_id: 20
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 240
+      literal: |-
+        on expiry {
+          set clip = binary-to-ascii(10, 8, ".", leased-address);
+          execute("/usr/local/bin/cp-revoke.sh", clip);
+        }
+    ccu: split
+    pools:
+      - router_address_offset: "{{ unit_id }}"
+        domain: "{{train_id}}.passenger.21net.com"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 1022
+          allow:
+            - known-clients
+  staff:
+    network: 10.244.{{ train_id }}.0/24
+    interface: vlan30
+    netconfig:
+      connection_type: vlan
+      parent_device: bond0
+      ipaddress_offset: "{{ unit_id }}"
+      vlan_id: 30
+      <%- if ! $facts[is_virtual] { -%>
+      macaddr: "00:21:21:21:21:2{{ unit_id }}"
+      <%- } -%>
+    dhcp:
+      min_lease_time: 60
+      max_lease_time: 120
+      literal: |-
+        on expiry {
+          set clip = binary-to-ascii(10, 8, ".", leased-address);
+          execute("/usr/local/bin/cp-revoke.sh", clip);
+        }
+    ccu: 0
+    pools:
+      - router_address_offset: "{{ unit_id }}"
+        domain: "{{train_id}}.staff.21net.com"
+        dhcp:
+          low_address_offset: 10
+          high_address_offset: 100
+          allow:
+            - unknown-clients

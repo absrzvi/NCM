@@ -1,0 +1,11 @@
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+- name: Nodes
+  path: nodes/%{::trusted.certname}.yaml
+- name: File parameter overrides
+  lookup_key: hiera_file
+- name: Common
+  path: common.yaml
